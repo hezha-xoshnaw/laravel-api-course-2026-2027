@@ -2,7 +2,11 @@
 
 A Laravel 13 application for learning backend development and REST APIs.
 
-The starting version is a fresh Laravel application. API routes and other features are added during the lessons.
+This is the completed Week 1 application: frontend files have been removed and `GET /api/hello` returns JSON.
+
+- [Week 1 guide](lessons/week-01/GUIDE.md) — steps to follow from the starting version.
+- [Completed changes](lessons/week-01/CHANGES.md) — what changed and how to check it.
+- [Command reference](lessons/week-01/QUICK-REFERENCE.md) — commands used in the lesson.
 
 ## Requirements
 
@@ -12,7 +16,7 @@ The starting version is a fresh Laravel application. API routes and other featur
 - VS Code or another code editor.
 - Postman for the API lessons.
 
-This starting version uses SQLite, Laravel's default database. Enable `pdo_sqlite` and `sqlite3` in PHP. MySQL will be configured in a later lesson.
+This version retains SQLite, Laravel's default database. Enable `pdo_sqlite` and `sqlite3` in PHP. MySQL will be configured in a later lesson.
 
 ## Get the project
 
@@ -40,7 +44,13 @@ php artisan migrate
 php artisan serve
 ```
 
-Open **http://127.0.0.1:8000**. You should see the Laravel welcome page.
+Open **http://127.0.0.1:8000/api/hello**. You should see:
+
+```json
+{"message":"Hello World"}
+```
+
+The root URL `/` returns 404 because the welcome-page route was removed.
 
 - `composer install` downloads the exact package versions in `composer.lock`.
 - `.env` holds settings for your local copy.
@@ -48,7 +58,7 @@ Open **http://127.0.0.1:8000**. You should see the Laravel welcome page.
 - `migrate` creates the default database tables.
 - `serve` starts the local development server. Keep its terminal open; press **Ctrl+C** to stop it.
 
-The welcome page works without installing frontend packages. Use `php artisan serve` for this course. The default `composer run setup` and `composer run dev` scripts include extra development tools that are not needed for this starting lesson.
+No frontend packages or NPM build are needed. Use `php artisan serve` to start the application; `composer run dev` is also configured to start this server. The hello endpoint does not query the database.
 
 ## Run an existing copy
 
@@ -70,7 +80,7 @@ If port 8000 is busy, run `php artisan serve --port=8001` and open **http://127.
 ## Before coming to an offline class
 
 1. Run the first-time setup while internet is available.
-2. Confirm that the welcome page loads and `php artisan test` passes.
+2. Confirm that `/api/hello` returns JSON and `php artisan test` passes.
 3. Bring the complete project folder, including `vendor/`, `.env`, and `database/database.sqlite`.
 4. After copying to the classroom PC, run `composer check-platform-reqs`, then `php artisan serve`.
 
@@ -88,13 +98,13 @@ For this SQLite baseline, neither Apache nor XAMPP's MySQL service needs to run.
 
 ## Weekly versions
 
-The planned branch names are:
+The course uses these branch names:
 
 - `main`: the fresh starting application and setup instructions.
 - `week-01-start`, `week-02-start`, and so on: the starting code and guide for a lesson.
 - `week-01-end`, `week-02-end`, and so on: the completed lesson and a summary of changes.
 
-Once those branches are published, select the version named by your lecturer, for example:
+Once the relevant branch is published, select the version named by your lecturer, for example:
 
 ```sh
 git switch week-01-start

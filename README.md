@@ -2,7 +2,10 @@
 
 A Laravel 13 application for learning backend development and REST APIs.
 
-This is the completed Week 2 application: ticket routes use a controller, a Form Request validates input, and an API Resource formats responses. Tickets are static PHP arrays; the preview endpoint does not save data.
+This is the Week 3 starting version. Its application code is unchanged from Week 2: ticket routes use a controller, a Form Request validates input, and an API Resource formats responses. Tickets are still static PHP arrays; the preview endpoint does not save data.
+
+- [Week 3 guide](lessons/week-03/GUIDE.md) — migrations, models, seeders, and stored tickets. Implement these steps during the lesson.
+- [Week 3 command reference](lessons/week-03/QUICK-REFERENCE.md) — commands and Eloquent patterns.
 
 - [Week 2 guide](lessons/week-02/GUIDE.md) — steps to follow from the starting version, including the extensions completed here.
 - [Completed changes](lessons/week-02/CHANGES.md) — endpoints, checks, and preparation for Week 3.
@@ -21,14 +24,14 @@ This version retains SQLite, Laravel's default database. Enable `pdo_sqlite` and
 
 ## Get the project
 
-To get this completed version:
+To get this starting version:
 
 ```sh
-git clone --branch week-02-end https://github.com/hezha-xoshnaw/laravel-api-course-2026-2027.git course-api
+git clone --branch week-03-start https://github.com/hezha-xoshnaw/laravel-api-course-2026-2027.git course-api
 cd course-api
 ```
 
-This command works once the lecturer publishes `week-02-end`. If you received a folder instead, open a terminal inside it. You should see the `artisan` and `composer.json` files.
+This command works once the lecturer publishes `week-03-start`. If you received a folder instead, open a terminal inside it. You should see the `artisan` and `composer.json` files.
 
 ## First-time setup
 

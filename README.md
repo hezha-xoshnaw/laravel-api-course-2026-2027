@@ -2,11 +2,12 @@
 
 A Laravel 13 application for learning backend development and REST APIs.
 
-This is the completed Week 1 application: frontend files have been removed and `GET /api/hello` returns JSON.
+This is the completed Week 2 application: ticket routes use a controller, a Form Request validates input, and an API Resource formats responses. Tickets are static PHP arrays; the preview endpoint does not save data.
 
-- [Week 1 guide](lessons/week-01/GUIDE.md) — steps to follow from the starting version.
-- [Completed changes](lessons/week-01/CHANGES.md) — what changed and how to check it.
-- [Command reference](lessons/week-01/QUICK-REFERENCE.md) — commands used in the lesson.
+- [Week 2 guide](lessons/week-02/GUIDE.md) — steps to follow from the starting version, including the extensions completed here.
+- [Completed changes](lessons/week-02/CHANGES.md) — endpoints, checks, and preparation for Week 3.
+- [Command reference](lessons/week-02/QUICK-REFERENCE.md) — commands used in the lesson.
+- [Week 1 recap](lessons/week-01/CHANGES.md) — API preparation and the hello route.
 
 ## Requirements
 
@@ -20,14 +21,14 @@ This version retains SQLite, Laravel's default database. Enable `pdo_sqlite` and
 
 ## Get the project
 
-When the repository is available, use the URL provided by the lecturer:
+To get this completed version:
 
 ```sh
-git clone <repository-url> course-api
+git clone --branch week-02-end https://github.com/hezha-xoshnaw/laravel-api-course-2026-2027.git course-api
 cd course-api
 ```
 
-Replace `<repository-url>` with the actual URL. If you received a folder instead, open a terminal inside it. You should see the `artisan` and `composer.json` files.
+This command works once the lecturer publishes `week-02-end`. If you received a folder instead, open a terminal inside it. You should see the `artisan` and `composer.json` files.
 
 ## First-time setup
 
@@ -58,7 +59,9 @@ The root URL `/` returns 404 because the welcome-page route was removed.
 - `migrate` creates the default database tables.
 - `serve` starts the local development server. Keep its terminal open; press **Ctrl+C** to stop it.
 
-No frontend packages or NPM build are needed. Use `php artisan serve` to start the application; `composer run dev` is also configured to start this server. The hello endpoint does not query the database.
+No frontend packages or NPM build are needed. Use `php artisan serve` to start the application; `composer run dev` is also configured to start this server. The lesson endpoints do not query the database.
+
+Next, try `GET /api/tickets`. See the [Week 2 checks](lessons/week-02/CHANGES.md#run-and-check) for the other endpoints and POST input.
 
 ## Run an existing copy
 
@@ -72,7 +75,6 @@ Use a second terminal for other commands:
 
 ```sh
 php artisan route:list
-php artisan test
 ```
 
 If port 8000 is busy, run `php artisan serve --port=8001` and open **http://127.0.0.1:8001**.
@@ -80,7 +82,7 @@ If port 8000 is busy, run `php artisan serve --port=8001` and open **http://127.
 ## Before coming to an offline class
 
 1. Run the first-time setup while internet is available.
-2. Confirm that `/api/hello` returns JSON and `php artisan test` passes.
+2. Confirm that `/api/hello` returns JSON and check the ticket endpoints in Postman using the Week 2 completed changes.
 3. Bring the complete project folder, including `vendor/`, `.env`, and `database/database.sqlite`.
 4. After copying to the classroom PC, run `composer check-platform-reqs`, then `php artisan serve`.
 

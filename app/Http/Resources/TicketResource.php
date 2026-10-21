@@ -10,12 +10,9 @@ class TicketResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id' => $this->when(
-                isset($this->resource['id']),
-                fn () => $this->resource['id'],
-            ),
-            'title' => $this->resource['title'],
-            'status' => $this->resource['status'],
+            'id' => $this->id,
+            'title' => $this->title,
+            'status' => $this->status,
         ];
     }
 }

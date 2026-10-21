@@ -10,6 +10,6 @@ Route::get('/hello', function () {
 });
 
 Route::get('/tickets', [TicketController::class, 'index']);
-Route::get('/tickets/{id}', [TicketController::class, 'show'])
-    ->whereNumber('id');
-Route::post('/tickets/preview', [TicketController::class, 'preview']);
+Route::get('/tickets/{ticket}', [TicketController::class, 'show'])
+    ->whereNumber('ticket');
+Route::post('/tickets', [TicketController::class, 'store']);

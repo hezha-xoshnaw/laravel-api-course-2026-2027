@@ -2,42 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\PreviewTicketRequest;
+use App\Http\Requests\StoreTicketRequest;
 use App\Http\Resources\TicketResource;
+use App\Models\Ticket;
 
 class TicketController extends Controller
 {
     public function index()
     {
-        return TicketResource::collection($this->sampleTickets());
+        return TicketResource::collection(Ticket::orderBy('id')->get());
     }
 
-    public function show(string $id)
+    public function show(Ticket $ticket)
     {
-        foreach ($this->sampleTickets() as $ticket) {
-            if ((string) $ticket['id'] === $id) {
-                return new TicketResource($ticket);
-            }
-        }
-
-        return response()->json(['message' => 'Ticket not found'], 404);
+        return new TicketResource($ticket);
     }
 
-    public function preview(PreviewTicketRequest $request)
+    public function store(StoreTicketRequest $request)
     {
-        $data = $request->validated();
+        $ticket = Ticket::create($request->validated());
+        $ticket->refresh();
 
-        return new TicketResource([
-            'title' => $data['title'],
-            'status' => 'open',
-        ]);
-    }
-
-    private function sampleTickets(): array
-    {
-        return [
-            ['id' => 1, 'title' => 'Printer is offline', 'status' => 'open'],
-            ['id' => 2, 'title' => 'Cannot sign in', 'status' => 'closed'],
-        ];
+        return (new TicketResource($ticket))
+            ->response()
+            ->setStatusCode(201);
     }
 }

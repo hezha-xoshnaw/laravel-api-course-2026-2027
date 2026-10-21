@@ -2,14 +2,12 @@
 
 A Laravel 13 application for learning backend development and REST APIs.
 
-This is the Week 3 starting version. Its application code is unchanged from Week 2: ticket routes use a controller, a Form Request validates input, and an API Resource formats responses. Tickets are still static PHP arrays; the preview endpoint does not save data.
+This is the completed Week 3 application. Tickets are stored in SQLite and accessed through Eloquent. The API lists, shows, and creates tickets with validated input and Resource responses.
 
-- [Week 3 guide](lessons/week-03/GUIDE.md) — migrations, models, seeders, and stored tickets. Implement these steps during the lesson.
+- [Week 3 guide](lessons/week-03/GUIDE.md) — original steps to follow from the start version.
+- [Week 3 completed changes](lessons/week-03/CHANGES.md) — what changed, Postman checks, and preparation for the next lesson.
 - [Week 3 command reference](lessons/week-03/QUICK-REFERENCE.md) — commands and Eloquent patterns.
-
-- [Week 2 guide](lessons/week-02/GUIDE.md) — steps to follow from the starting version, including the extensions completed here.
-- [Completed changes](lessons/week-02/CHANGES.md) — endpoints, checks, and preparation for Week 3.
-- [Command reference](lessons/week-02/QUICK-REFERENCE.md) — commands used in the lesson.
+- [Week 2 recap](lessons/week-02/CHANGES.md) — controllers, validation, and Resources with static arrays.
 - [Week 1 recap](lessons/week-01/CHANGES.md) — API preparation and the hello route.
 
 ## Requirements
@@ -24,14 +22,14 @@ This version retains SQLite, Laravel's default database. Enable `pdo_sqlite` and
 
 ## Get the project
 
-To get this starting version:
+To get this completed version:
 
 ```sh
-git clone --branch week-03-start https://github.com/hezha-xoshnaw/laravel-api-course-2026-2027.git course-api
+git clone --branch week-03-end https://github.com/hezha-xoshnaw/laravel-api-course-2026-2027.git course-api
 cd course-api
 ```
 
-This command works once the lecturer publishes `week-03-start`. If you received a folder instead, open a terminal inside it. You should see the `artisan` and `composer.json` files.
+This command works once the lecturer publishes `week-03-end`. If you received a folder instead, open a terminal inside it. You should see the `artisan` and `composer.json` files.
 
 ## First-time setup
 
@@ -45,6 +43,7 @@ php -r "file_exists('.env') || copy('.env.example', '.env');"
 php artisan key:generate
 php -r "file_exists('database/database.sqlite') || touch('database/database.sqlite');"
 php artisan migrate
+php artisan db:seed
 php artisan serve
 ```
 
@@ -59,16 +58,19 @@ The root URL `/` returns 404 because the welcome-page route was removed.
 - `composer install` downloads the exact package versions in `composer.lock`.
 - `.env` holds settings for your local copy.
 - `key:generate` creates the application's encryption key. Run it during initial setup, not every time you start the project.
-- `migrate` creates the default database tables.
+- `migrate` applies pending migrations, including the tickets table.
+- `db:seed` adds two sample tickets. Rerunning it matches these sample titles and resets their statuses.
 - `serve` starts the local development server. Keep its terminal open; press **Ctrl+C** to stop it.
 
-No frontend packages or NPM build are needed. Use `php artisan serve` to start the application; `composer run dev` is also configured to start this server. The lesson endpoints do not query the database.
+No frontend packages or NPM build are needed. Use `php artisan serve` to start the application; `composer run dev` is also configured to start this server. Ticket endpoints now use the SQLite database. The hello endpoint does not query it.
 
-Next, try `GET /api/tickets`. See the [Week 2 checks](lessons/week-02/CHANGES.md#run-and-check) for the other endpoints and POST input.
+Next, try `GET /api/tickets`. See the [Week 3 checks](lessons/week-03/CHANGES.md#run-and-check) for the other endpoints and POST input.
 
 ## Run an existing copy
 
-After the first-time setup, start the application with:
+If upgrading an existing Week 2 copy, run `php artisan migrate` and `php artisan db:seed` once. There is no need to regenerate the application key.
+
+After setup, start the application with:
 
 ```sh
 php artisan serve
@@ -85,7 +87,7 @@ If port 8000 is busy, run `php artisan serve --port=8001` and open **http://127.
 ## Before coming to an offline class
 
 1. Run the first-time setup while internet is available.
-2. Confirm that `/api/hello` returns JSON and check the ticket endpoints in Postman using the Week 2 completed changes.
+2. Confirm that `/api/hello` returns JSON and check the ticket endpoints in Postman using the Week 3 completed changes.
 3. Bring the complete project folder, including `vendor/`, `.env`, and `database/database.sqlite`.
 4. After copying to the classroom PC, run `composer check-platform-reqs`, then `php artisan serve`.
 

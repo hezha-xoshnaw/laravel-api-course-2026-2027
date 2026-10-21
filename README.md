@@ -2,7 +2,10 @@
 
 A Laravel 13 application for learning backend development and REST APIs.
 
-This is the completed Week 3 application. Tickets are stored in SQLite and accessed through Eloquent. The API lists, shows, and creates tickets with validated input and Resource responses.
+This is the Week 4 starting version. Its application code is the completed Week 3 version: tickets are stored in SQLite, and the API lists, shows, and creates them. Update and delete will be implemented during the lesson.
+
+- [Week 4 guide](lessons/week-04/GUIDE.md) — partial updates, validation, deletion, and response status codes.
+- [Week 4 command reference](lessons/week-04/QUICK-REFERENCE.md) — commands, patterns, and Postman checks.
 
 - [Week 3 guide](lessons/week-03/GUIDE.md) — original steps to follow from the start version.
 - [Week 3 completed changes](lessons/week-03/CHANGES.md) — what changed, Postman checks, and preparation for the next lesson.
@@ -22,14 +25,14 @@ This version retains SQLite, Laravel's default database. Enable `pdo_sqlite` and
 
 ## Get the project
 
-To get this completed version:
+To get this starting version:
 
 ```sh
-git clone --branch week-03-end https://github.com/hezha-xoshnaw/laravel-api-course-2026-2027.git course-api
+git clone --branch week-04-start https://github.com/hezha-xoshnaw/laravel-api-course-2026-2027.git course-api
 cd course-api
 ```
 
-This command works once the lecturer publishes `week-03-end`. If you received a folder instead, open a terminal inside it. You should see the `artisan` and `composer.json` files.
+This command works once the lecturer publishes `week-04-start`. If you received a folder instead, open a terminal inside it. You should see the `artisan` and `composer.json` files.
 
 ## First-time setup
 
